@@ -1,0 +1,43 @@
+
+---
+
+- name: GENERATE SNMP CONFIGS USING JINJA2 - AMERICAS
+  hosts: AMER
+  connection: local
+  gather_facts: no
+
+  tasks:
+ 
+    # - name: VIEW SNMP_RO VARIABLE
+    #   ansible.builtin.debug: 
+    #      var: snmp_ro
+        
+    - name: VIEW SNMP_CONFIG VARIABLE
+      ansible.builtin.debug: 
+         var: snmp_config
+        
+        
+    - name: GENERATE IOS SNMP CONFIGURATIONS
+      ansible.builtin.template:
+         src: ios-snmpv2.j2
+         dest: "./configs/{{ inventory_hostname }}-snmp.cfg"
+
+- name: GENERATE SNMP CONFIGS USING JINJA2 - EMEA
+  hosts: EMEA
+  connection: local
+  gather_facts: no
+
+  tasks:
+    
+    # - name: VIEW SNMP_RO VARIABLE
+    #   ansible.builtin.debug: 
+    #     var: snmp_ro
+        
+    - name: VIEW SNMP_CONFIG VARIABLE
+      ansible.builtin.debug: 
+        var: snmp_config
+    
+    - name: GENERATE JUNOS SNMP CONFIGURATIONS
+      ansible.builtin.template:
+        src: junos-snmpv2.j2
+        dest: "./configs/{{ inventory_hostname }}-snmp.cfg"

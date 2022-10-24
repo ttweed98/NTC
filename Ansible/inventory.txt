@@ -1,0 +1,14 @@
+[all:vars]
+ansible_user=ntc
+ansible_ssh_pass=ntc123
+
+[ios]
+csr1 ansible_network_os=ios ansible_host=x.y.z.a
+csr2 ansible_network_os=ios
+csr3 ansible_network_os=ios
+
+
+[vmx]
+vmx1 ansible_network_os=junos
+vmx2 ansible_network_os=junos
+vmx3 ansible_network_os=junos

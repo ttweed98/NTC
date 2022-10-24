@@ -1,0 +1,15 @@
+
+---
+
+  - name: MULTI-PLATFORM SNMP
+    hosts: ios,nxos
+    connection: ansible.netcommon.network_cli
+    gather_facts: no
+
+    roles:
+      - role: snmp
+        snmp_communities:
+          - community: ntc-public
+            group: network-operator
+          - community: ntc-private
+            group: network-admin

@@ -1,0 +1,10 @@
+- hosts: "{{ target }}"
+  remote_user: donn
+  vars_files:
+    - myvars
+  roles:
+    - myrole
+
+
+# Execute the playbook as follows:
+# ansible-playbook myplaybook.yml -e "{target: 10.1.1.1}" -i 10.1.1.1, ....
