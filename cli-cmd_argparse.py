@@ -7,7 +7,7 @@ def get_interface_type(interface):
     if interface.lower().startswith('et'):
         iftype = 'ethernet'
     elif interface.lower().startswith('vl'):
-        iftype = 'vlan'
+        iftype = 'svi'
     elif interface.lower().startswith('lo'):
         iftype = 'loopback'
     elif interface.lower().startswith('po'):
@@ -17,17 +17,23 @@ def get_interface_type(interface):
 
     return iftype
 
-# interface = input('Please enter the interface name:')
+# The following block prompts the user to enter the interface name
+
+# interface = input('Please enter the interface name: ')
 # interface_type = get_interface_type(interface)
 # print(f"The interface type is {interface_type}")
 
+# The following block expects the user to enter the interface name as a CLI argument 
+
 # print(sys.argv)
 # if len(sys.argv) != 2:
-#     print('You need to specify the interface name.')
+#     print('You need to specify only one interface name as an argument while running the script.')
 # else:
 #     interface = sys.argv[1]
 #     interface_type = get_interface_type(interface)
 #     print(f"The interface type is {interface_type}")
+
+# The following block also expects the user to enter the interface name as a CLI argument ; however provides better cmd help
 
 parser = argparse.ArgumentParser(description = 'ARGPARSE DEMO')
 parser.add_argument('-i', '--interface', help='Interface name', required = True)
@@ -40,7 +46,9 @@ interface = args.interface
 print(interface)
 interface_type = get_interface_type(interface)
 
-print(args.print)
+# print(args.print)
 #print(type(args.print))
 if args.print:
     print(f'The interface type is {interface_type} ')
+else:
+    print("You decided not to print the interface type")
